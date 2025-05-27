@@ -1,0 +1,234 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Mencegah scroll body utama */
+}
+
+.app-layout {
+    display: flex;
+    width: 95%;
+    max-width: 1000px;
+    height: 90vh;
+    max-height: 700px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h3 {
+    margin-top: 0;
+    color: #007bff;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    font-size: 1.1em;
+}
+
+#onlineUsersList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+#onlineUsersList li {
+    padding: 8px 0;
+    font-size: 0.95em;
+    color: #555;
+    display: flex;
+    align-items: center;
+}
+
+#onlineUsersList li::before {
+    content: '●'; /* Bulatan sebagai indikator online */
+    color: #28a745; /* Hijau untuk online */
+    margin-right: 8px;
+    font-size: 0.8em;
+}
+
+
+.chat-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.chat-header h2 {
+    margin: 0;
+    font-size: 1.3em;
+}
+
+#typingIndicator {
+    font-size: 0.8em;
+    height: 18px; /* Beri ruang agar tidak melompat */
+    color: #e0e0e0;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eee;
+}
+
+.message {
+    margin-bottom: 12px;
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 75%;
+    word-wrap: break-word;
+    display: flex; /* For potential avatar later */
+    flex-direction: column; /* Stack sender and text */
+}
+
+.message .sender {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: #333; /* Default sender color */
+}
+
+.message .text {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+.message.sent {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    margin-left: auto;
+}
+.message.sent .sender {
+    color: #e0f7fa; /* Lighter sender color for sent messages */
+}
+
+.message.received {
+    background-color: #e9e9eb;
+    color: #333;
+    align-self: flex-start;
+    margin-right: auto;
+}
+.message.received .sender {
+    color: #0056b3; /* Darker sender color for received messages */
+}
+
+
+.chat-input {
+    display: flex;
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    background-color: #f9f9f9;
+}
+
+.chat-input input[type="text"] {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 22px;
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+.chat-input button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 22px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.chat-input button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.chat-input input:disabled,
+.chat-input button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Modal Styling */
+.modal {
+    display: flex; /* Hidden by default, shown by JS */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-align: center;
+    width: 90%;
+    max-width: 350px;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.modal-content input[type="text"] {
+    width: calc(100% - 22px); /* Adjust for padding */
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.modal-content button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: #218838;
+}

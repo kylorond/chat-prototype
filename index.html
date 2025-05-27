@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Realtime Dengan Fitur Tambahan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <div class="sidebar">
+            <h3>Pengguna Online</h3>
+            <ul id="onlineUsersList">
+                </ul>
+        </div>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>Ruang Obrolan Publik</h2>
+                <div id="typingIndicator">
+                    </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                </div>
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="Ketik pesan Anda..." disabled>
+                <button id="sendButton" disabled>Kirim</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="usernameModal" class="modal">
+        <div class="modal-content">
+            <h2>Masukkan Nama Anda</h2>
+            <input type="text" id="usernameInput" placeholder="Nama Pengguna...">
+            <button id="setUsernameButton">Gabung Chat</button>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <script src="app.js"></script>
+</body>
+</html>
